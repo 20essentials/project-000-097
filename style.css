@@ -1,0 +1,111 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  user-select: none;
+}
+
+html {
+  scrollbar-width: thin;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  max-width: 2000px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+.am-header {
+  position: relative;
+  z-index: 999;
+  height: 6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: repeating-conic-gradient(from 0deg at 102% 100%,
+      blue 0 1deg,
+      springgreen 3deg 4deg,
+      blue 6deg 7deg);
+
+
+  h2 {
+    width: fit-content;
+    position: relative;
+    color: #fff;
+    font-size: clamp(0.875rem, 0.7011rem + 0.8696vw, 1.375rem);
+    text-align: center;
+  }
+}
+
+.am-main {
+  margin-top: -5px;
+  height: max-content;
+  background: url('assets/template1.jpg');
+  background-repeat: repeat;
+  background-size: 300px;
+  display: grid;
+  place-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1.5rem;
+  gap: 1.5rem;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: crecer auto linear forwards;
+  animation-timeline: scroll(y root);
+
+  .am-card {
+    padding: 20px;
+    min-height: 250px;
+    background-color: #00f8;
+    aspect-ratio: 1;
+
+    * {
+      pointer-events: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center;
+      outline: 3px solid #0f0;
+      outline-offset: 10px;
+    }
+  }
+}
+
+
+@keyframes crecer {
+  0% {
+    background-size: 300px;
+  }
+
+  100% {
+    background-size: 1000px;
+  }
+}
+
+@media (width <=700px) {
+  .am-main {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    .am-card {
+      min-height: 150px;
+      min-height: auto;
+    }
+  }
+}
